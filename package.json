@@ -2,23 +2,72 @@
   "name": "excel-ts",
   "version": "0.0.0",
   "description": "Clone of Excel",
-  "main": "index.js",
+  "keywords": [
+    "javascript",
+    "js",
+    "typescript",
+    "excel"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server",
+    "build": "webpack --env.production",
+    "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dengoloborodko/excel-ts.git"
   },
-  "keywords": [
-    "javascript",
-    "js",
-    "typescript"
-  ],
-  "author": "Denys Goloborodko <den.od.1911@gmail.com>",
+  "author": {
+    "name": "Denys Goloborodko",
+    "email": "den.od.1911@gmail.com",
+    "url": "https://github.com/dengoloborodko"
+  },
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/dengoloborodko/excel-ts/issues"
   },
-  "homepage": "https://github.com/dengoloborodko/excel-ts#readme"
+  "homepage": "https://github.com/dengoloborodko/excel-ts#readme",
+  "devDependencies": {
+    "@babel/cli": "7.11.6",
+    "@babel/core": "7.11.6",
+    "@babel/preset-env": "7.11.5",
+    "babel-loader": "8.1.0",
+    "clean-webpack-plugin": "3.0.0",
+    "css-loader": "4.3.0",
+    "file-loader": "^6.1.0",
+    "gh-pages": "3.1.0",
+    "html-webpack-plugin": "4.5.0",
+    "husky": "4.3.0",
+    "mini-css-extract-plugin": "0.11.2",
+    "prettier": "2.1.2",
+    "pretty-quick": "3.0.2",
+    "sass": "1.26.11",
+    "sass-loader": "10.0.2",
+    "style-loader": "1.2.1",
+    "ts-loader": "8.0.4",
+    "typescript": "4.0.3",
+    "webpack": "4.44.2",
+    "webpack-bundle-analyzer": "3.9.0",
+    "webpack-cli": "3.3.12",
+    "webpack-dev-server": "3.11.0"
+  },
+  "dependencies": {},
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  }
 }
