@@ -1,0 +1,43 @@
+.excel-table {
+  &__controls-wrapper {
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: $excel-table-header-height;
+    padding: 9px 20px;
+  }
+
+  &__header-title-input {
+    @include font($font-family, 1.1rem, 400, #777);
+
+    padding: 2px 7px;
+    border: 1px solid transparent;
+    border-radius: $border-radius;
+    transition: border-color $transition-duration ease;
+
+    &:hover {
+      border-color: #e5e5e5;
+    }
+
+    &:focus {
+      outline: none;
+      border: 2px solid #1a73e8;
+      padding: 1px 6px;
+    }
+  }
+
+  &__header-controls {
+  }
+
+  &__toolbar {
+  }
+
+  &__formula {
+  }
+
+  &__grid {
+  }
+}

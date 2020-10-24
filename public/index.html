@@ -14,6 +14,34 @@
     />
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root" class="excel">
+      <div class="excel-dashboard">
+        <div class="excel-dashboard__header"></div>
+        <div class="excel-dashboard__templates-gallery"></div>
+        <div class="excel-dashboard__tables-list"></div>
+      </div>
+      <div class="excel-table">
+        <div class="excel-table__controls-wrapper">
+          <div class="excel-table__header">
+            <input
+              type="text"
+              class="excel-table__header-title-input"
+              value="New table"
+            />
+            <div class="excel-table__header-controls">
+              <button class="btn btn-danger">
+                <span class="material-icons"> delete </span>
+              </button>
+              <button class="btn btn-success">
+                <span class="material-icons"> exit_to_app </span>
+              </button>
+            </div>
+          </div>
+          <div class="excel-table__toolbar"></div>
+          <div class="excel-table__formula"></div>
+        </div>
+        <div class="excel-table__grid"></div>
+      </div>
+    </div>
   </body>
 </html>

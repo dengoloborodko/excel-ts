@@ -1,0 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  @include font($font-family, 1rem, 500, $basic-font-color);
+}

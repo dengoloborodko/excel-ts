@@ -1,0 +1,33 @@
+.btn {
+  cursor: pointer;
+  color: $basic-btn-text-color;
+  background-color: transparent;
+  border: none;
+  border-radius: $border-radius;
+  transition: background-color $transition-duration ease;
+
+  &:hover {
+    background-color: $btn-bg-hover-color;
+  }
+
+  &:focus,
+  &:active {
+    outline: none;
+  }
+}
+
+.btn-success {
+  &:focus,
+  &:active {
+    color: darken($btn-success-bg-focus-color, 50%);
+    background-color: $btn-success-bg-focus-color;
+  }
+}
+
+.btn-danger {
+  &:focus,
+  &:active {
+    color: darken($btn-danger-bg-focus-color, 50%);
+    background-color: $btn-danger-bg-focus-color;
+  }
+}
