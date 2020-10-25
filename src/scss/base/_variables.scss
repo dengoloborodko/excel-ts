@@ -11,3 +11,6 @@ $border-radius: 4px;
 $transition-duration: 0.25s;
 $excel-table-header-height: 52px;
 $excel-table-toolbar-height: 48px;
+$excel-table-formula-height: 25px;
+$excel-table-controls-wrapper-height: $excel-table-header-height +
+  $excel-table-toolbar-height + $excel-table-formula-height;

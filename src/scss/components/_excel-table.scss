@@ -1,5 +1,6 @@
 .excel-table {
   &__controls-wrapper {
+    height: $excel-table-controls-wrapper-height;
   }
 
   &__header {
@@ -29,6 +30,15 @@
     }
   }
 
+  &__header-controls {
+    display: flex;
+    align-items: center;
+
+    .btn + .btn {
+      margin-left: 10px;
+    }
+  }
+
   &__toolbar {
     display: flex;
     align-items: center;
@@ -47,6 +57,36 @@
   }
 
   &__formula {
+    display: flex;
+    align-items: center;
+    height: $excel-table-formula-height;
+    padding: 0 28px;
+    border-bottom: 2px solid $border-color;
+  }
+
+  &__formula-label {
+    @include font($font-family, 1.2rem, 300, #cfcfd0);
+
+    font-style: italic;
+  }
+
+  &__formula-separator {
+    height: 14px;
+    margin: 0 5px 0 12px;
+    border-left: 1px solid $border-color;
+  }
+
+  &__formula-content {
+    @include font($font-family, 0.8rem, 400, $basic-font-color);
+
+    flex-grow: 1;
+    padding: 0 7px;
+    overflow: hidden;
+    white-space: nowrap;
+
+    &:focus {
+      outline: none;
+    }
   }
 
   &__grid {
