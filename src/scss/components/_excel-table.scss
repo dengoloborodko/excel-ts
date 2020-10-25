@@ -29,10 +29,21 @@
     }
   }
 
-  &__header-controls {
-  }
-
   &__toolbar {
+    display: flex;
+    align-items: center;
+    height: $excel-table-toolbar-height;
+    padding: 9px 20px;
+    border-top: 2px solid $border-color;
+    border-bottom: 2px solid $border-color;
+
+    .material-icons {
+      font-size: 1.2rem;
+    }
+
+    .btn + .btn {
+      margin-left: 7px;
+    }
   }
 
   &__formula {
