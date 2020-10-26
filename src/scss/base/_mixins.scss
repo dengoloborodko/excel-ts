@@ -11,3 +11,9 @@
   color: $font-color;
   line-height: $line-height;
 }
+
+@mixin center-content() {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -25,7 +25,7 @@
 
     &:focus {
       outline: none;
-      border: 2px solid #1a73e8;
+      border: 2px solid $input-focus-border-color;
       padding: 1px 6px;
     }
   }
@@ -60,19 +60,21 @@
     display: flex;
     align-items: center;
     height: $excel-table-formula-height;
-    padding: 0 28px;
+    padding-right: 28px;
     border-bottom: 2px solid $border-color;
   }
 
   &__formula-label {
     @include font($font-family, 1.2rem, 300, #cfcfd0);
 
+    width: $excel-table-grid-row-label-width - 1px;
+    text-align: center;
     font-style: italic;
   }
 
   &__formula-separator {
     height: 14px;
-    margin: 0 5px 0 12px;
+    margin-right: 5px;
     border-left: 1px solid $border-color;
   }
 
@@ -90,5 +92,94 @@
   }
 
   &__grid {
+    width: 100vw;
+    height: calc(100vh - #{$excel-table-controls-wrapper-height});
+    overflow: auto;
+  }
+
+  &__grid-header {
+    z-index: 3;
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: max-content;
+  }
+
+  &__grid-row,
+  &__grid-row-data {
+    display: flex;
+  }
+
+  &__grid-row-label,
+  &__grid-row-data-cell {
+    border-right: 1px solid $border-color;
+    border-bottom: 1px solid $border-color;
+  }
+
+  &__grid-row-label {
+    @include center-content;
+    @include font(
+      $font-family,
+      0.8rem,
+      400,
+      $excel-table-grid-labels-text-color
+    );
+
+    width: $excel-table-grid-row-label-width;
+    min-width: $excel-table-grid-row-label-width;
+  }
+
+  &__grid-row-data-cell {
+    @include font($font-family, 0.8rem, 400, $basic-font-color);
+
+    display: flex;
+    align-items: center;
+    width: $excel-table-grid-default-column-width;
+    padding: 4px;
+    outline: none;
+
+    &--selected {
+      padding: 2px;
+      border: 2px solid $input-focus-border-color;
+    }
+  }
+
+  &__grid-header {
+    .excel-table__grid-row-label {
+      position: sticky;
+      top: 0;
+      left: 0;
+      height: $excel-table-grid-first-row-height;
+      background-color: #fff;
+      border-right: 4px solid $border-color;
+      border-bottom: 4px solid $border-color;
+    }
+
+    .excel-table__grid-row-data-cell {
+      @include center-content;
+      @include font(
+        $font-family,
+        0.8rem,
+        400,
+        $excel-table-grid-labels-text-color
+      );
+
+      height: $excel-table-grid-first-row-height;
+      background-color: $excel-table-grid-labels-bg;
+    }
+  }
+
+  &__grid-body {
+    .excel-table__grid-row {
+      height: $excel-table-grid-default-row-height;
+    }
+
+    .excel-table__grid-row-label {
+      z-index: 2;
+      position: sticky;
+      top: 0;
+      left: 0;
+      background-color: $excel-table-grid-labels-bg;
+    }
   }
 }

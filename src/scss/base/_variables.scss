@@ -6,6 +6,9 @@ $btn-bg-hover-color: #f1f3f3;
 $btn-success-bg-focus-color: #e6f4ea;
 $btn-danger-bg-focus-color: #f4c2b6;
 $border-color: #dadce0;
+$input-focus-border-color: #1a73e8;
+$excel-table-grid-labels-bg: #f8f9fa;
+$excel-table-grid-labels-text-color: #838587;
 
 $border-radius: 4px;
 $transition-duration: 0.25s;
@@ -14,3 +17,7 @@ $excel-table-toolbar-height: 48px;
 $excel-table-formula-height: 25px;
 $excel-table-controls-wrapper-height: $excel-table-header-height +
   $excel-table-toolbar-height + $excel-table-formula-height;
+$excel-table-grid-row-label-width: 50px;
+$excel-table-grid-default-column-width: 300px;
+$excel-table-grid-default-row-height: 25px;
+$excel-table-grid-first-row-height: 30px;
