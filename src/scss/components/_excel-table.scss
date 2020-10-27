@@ -140,7 +140,7 @@
 
     &--selected {
       padding: 2px;
-      border: 2px solid $input-focus-border-color;
+      border: 2px solid $blue;
     }
   }
 
@@ -149,7 +149,7 @@
       position: sticky;
       top: 0;
       left: 0;
-      height: $excel-table-grid-first-row-height;
+      height: $excel-table-grid-header-row-height;
       background-color: #fff;
       border-right: 4px solid $border-color;
       border-bottom: 4px solid $border-color;
@@ -164,7 +164,7 @@
         $excel-table-grid-labels-text-color
       );
 
-      height: $excel-table-grid-first-row-height;
+      height: $excel-table-grid-header-row-height;
       background-color: $excel-table-grid-labels-bg;
     }
   }

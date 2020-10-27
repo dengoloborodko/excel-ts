@@ -16,9 +16,27 @@
   <body>
     <div id="root" class="excel">
       <div class="excel-dashboard">
-        <div class="excel-dashboard__header"></div>
-        <div class="excel-dashboard__templates-gallery"></div>
-        <div class="excel-dashboard__tables-list"></div>
+        <div class="excel-dashboard__header">
+          <h1>Excel Dashboard</h1>
+        </div>
+        <div class="excel-dashboard__templates">
+          <h2 class="excel-dashboard__templates-title">Create new table</h2>
+          <div class="excel-dashboard__templates-gallery">
+            <a class="excel-dashboard__templates-gallery-new-table" href="#">
+              <span class="material-icons"> add </span>
+            </a>
+          </div>
+        </div>
+        <table class="excel-dashboard__tables-list">
+          <tr>
+            <th>Name</th>
+            <th>Date of creation</th>
+          </tr>
+          <tr>
+            <td>Test</td>
+            <td>12.09.2020</td>
+          </tr>
+        </table>
       </div>
       <div class="excel-table">
         <div class="excel-table__controls-wrapper">
