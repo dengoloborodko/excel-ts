@@ -3,17 +3,23 @@ import {
   Children,
   OptionsPassedToComponent,
   OptionsMountedForComponent
-} from './types';
+} from '../types';
 
 export abstract class Component extends DOMListener {
   private $el: HTMLElement | null;
   private readonly options: OptionsMountedForComponent;
-  protected children: Children;
+  protected readonly children: Children;
 
   protected constructor(options: OptionsPassedToComponent = {}) {
-    super();
+    const {
+      tagName = 'div',
+      className,
+      id,
+      children = {},
+      events = []
+    } = options;
 
-    const { tagName = 'div', className, id, children = {} } = options;
+    super(events);
 
     this.$el = null;
     this.options = { tagName, className, id };
@@ -70,7 +76,7 @@ export abstract class Component extends DOMListener {
     Object.values(this.children).forEach(child => child.initialize());
     this.$el = Component.createElement(tagName, className, id);
     this.render();
-    // add listeners
+    this.addEvents(this.$el);
   }
 
   abstract render(): void;
@@ -84,6 +90,6 @@ export abstract class Component extends DOMListener {
 
     Object.values(this.children).forEach(child => child.destroy());
     this.$el.remove();
-    // remove listeners
+    this.removeEvents(this.$el);
   }
 }
