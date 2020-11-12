@@ -47,10 +47,7 @@ export abstract class Component extends DOMListener {
 
   public getElementNode(): HTMLElement {
     if (!this.$el) {
-      throw new Error(
-        `Component node isn't present yet. You should call the initialize method 
-        first of all after component object creation`
-      );
+      this.throwComponentNodeIsNotPresentError();
     }
 
     return this.$el;
@@ -58,10 +55,7 @@ export abstract class Component extends DOMListener {
 
   public getElementHTML(): string {
     if (!this.$el) {
-      throw new Error(
-        `Component html isn't present yet. You should call the initialize method 
-        first of all after component object creation`
-      );
+      this.throwComponentHTMLIsNotPresentError();
     }
 
     return this.$el.outerHTML;
@@ -83,9 +77,7 @@ export abstract class Component extends DOMListener {
 
   public destroy(): void {
     if (!this.$el) {
-      throw new Error(
-        `Component isn't initialized yet. There is no sense in destroying it`
-      );
+      this.throwComponentIsNotInitializedError();
     }
 
     Object.values(this.children).forEach(child => child.destroy());

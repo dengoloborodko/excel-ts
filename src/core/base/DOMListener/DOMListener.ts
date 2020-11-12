@@ -1,6 +1,7 @@
 import { Event, Events } from '../types';
+import { Errors } from '../Errors';
 
-export abstract class DOMListener {
+export abstract class DOMListener extends Errors {
   private static eventManipulationType = {
     ADD: 'add',
     REMOVE: 'remove'
@@ -8,6 +9,8 @@ export abstract class DOMListener {
   private isEventsAdded: boolean;
 
   protected constructor(private events: Events) {
+    super();
+
     this.events = events;
     this.isEventsAdded = false;
   }
@@ -23,10 +26,7 @@ export abstract class DOMListener {
 
   protected removeEvents($root: HTMLElement): void {
     if (!this.isEventsAdded) {
-      throw new Error(
-        `You didn't add events, so there is no sense of removing them. You can 
-        add events by calling 'addEvents' method`
-      );
+      this.throwNoEventsAddedError();
     }
 
     this.events.forEach((event: Event) =>
@@ -41,32 +41,8 @@ export abstract class DOMListener {
   private bindEventHandlerCallback(handlerName: string): void {
     const handlerCallback: any = this[handlerName as keyof this];
 
-    DOMListener.throwErrorIfHandlerCallbackIsNotValid(
-      handlerCallback,
-      handlerName
-    );
+    this.throwErrorIfHandlerCallbackIsNotValid(handlerCallback, handlerName);
     this[handlerName as keyof this] = handlerCallback.bind(this);
-  }
-
-  private static throwErrorIfHandlerCallbackIsNotValid(
-    handlerCallback: any,
-    handlerName: string
-  ): never | void {
-    if (!handlerCallback) {
-      throw new Error(
-        `Can't find method in Component by provided handler name '${handlerName}'`
-      );
-    } else if (typeof handlerCallback !== 'function') {
-      throw new Error(
-        `Provided handler name '${handlerName}' isn't pointing a function`
-      );
-    } else if (handlerCallback.length > 1) {
-      throw new Error(
-        `Provided handler callback with the name '${handlerName}' is defined 
-        with ${handlerCallback.length} arguments, but expected only 1 argument 
-        - event object`
-      );
-    }
   }
 
   private manipulateEvent(
@@ -75,7 +51,7 @@ export abstract class DOMListener {
     eventManipulationType: string
   ): void {
     const handlerCallback = this.getEventHandlerCallbackByName(handlerName);
-    const elementForEventManipulation = DOMListener.getRequiredElementBySelector(
+    const elementForEventManipulation = DOMListener.getElementForEventManipulation(
       $root,
       selector
     );
@@ -93,7 +69,7 @@ export abstract class DOMListener {
     return (this[handlerName as keyof this] as unknown) as EventListener;
   }
 
-  private static getRequiredElementBySelector(
+  private static getElementForEventManipulation(
     $root: HTMLElement,
     selector?: string
   ): HTMLElement {
@@ -108,18 +84,5 @@ export abstract class DOMListener {
     }
 
     return rootChild;
-  }
-
-  private static throwNoElementFoundBySelectorError(
-    $root: HTMLElement,
-    selector: string
-  ): never {
-    const rootTagName = $root.tagName.toLocaleLowerCase();
-    const rootClassName = $root.classList ? `.${$root.classList[0]}` : '';
-
-    throw new Error(
-      `No element found in ${rootTagName + rootClassName} by provided selector 
-      '${selector}'`
-    );
   }
 }
