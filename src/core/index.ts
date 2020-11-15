@@ -1,3 +1,3 @@
-import { Component } from './base';
+import { Component } from './Component';
 
 export { Component };
