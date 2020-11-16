@@ -1,7 +1,7 @@
 import { DOMListener } from '../DOMListener';
 import { EventEmitter } from '../EventEmitter';
 import {
-  Children,
+  ComponentChildren,
   OptionsPassedToComponent,
   OptionsMountedForComponent
 } from '../types';
@@ -11,7 +11,7 @@ const eventEmitter = new EventEmitter();
 export abstract class Component extends DOMListener {
   private $el: HTMLElement | null;
   private readonly options: OptionsMountedForComponent;
-  protected readonly children: Children;
+  protected readonly children: ComponentChildren;
   protected eventEmitter: EventEmitter;
 
   protected constructor(options: OptionsPassedToComponent = {}) {

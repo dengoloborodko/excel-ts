@@ -1,4 +1,4 @@
-import { Event, Events } from '../types';
+import { DomListenerEvent, DomListenerEvents } from '../types';
 import { ComponentErrors } from '../Errors';
 
 export abstract class DOMListener extends ComponentErrors {
@@ -8,7 +8,7 @@ export abstract class DOMListener extends ComponentErrors {
   };
   private isEventsAdded: boolean;
 
-  protected constructor(private events: Events) {
+  protected constructor(private events: DomListenerEvents) {
     super();
 
     this.events = events;
@@ -16,7 +16,7 @@ export abstract class DOMListener extends ComponentErrors {
   }
 
   protected addEvents($root: HTMLElement): void {
-    this.events.forEach((event: Event) => {
+    this.events.forEach((event: DomListenerEvent) => {
       this.bindEventHandlerCallback(event.handlerName);
       this.manipulateEvent($root, event, DOMListener.eventManipulationType.ADD);
     });
@@ -29,7 +29,7 @@ export abstract class DOMListener extends ComponentErrors {
       this.throwNoEventsAddedError();
     }
 
-    this.events.forEach((event: Event) =>
+    this.events.forEach((event: DomListenerEvent) =>
       this.manipulateEvent(
         $root,
         event,
@@ -47,7 +47,7 @@ export abstract class DOMListener extends ComponentErrors {
 
   private manipulateEvent(
     $root: HTMLElement,
-    { type, selector, handlerName }: Event,
+    { type, selector, handlerName }: DomListenerEvent,
     eventManipulationType: string
   ): void {
     const handlerCallback = this.getEventHandlerCallbackByName(handlerName);

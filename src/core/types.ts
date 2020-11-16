@@ -1,21 +1,21 @@
 import { Component } from './Component';
 
-export interface Event {
+export interface DomListenerEvent {
   type: string;
   selector?: string;
   handlerName: string;
 }
 
-export interface Events extends Array<Event> {}
+export interface DomListenerEvents extends Array<DomListenerEvent> {}
 
-export type Children = { [key: string]: Component };
+export type ComponentChildren = { [key: string]: Component };
 
 export interface OptionsPassedToComponent {
   className?: string;
   id?: string;
   tagName?: string;
-  children?: Children;
-  events?: Events;
+  children?: ComponentChildren;
+  events?: DomListenerEvents;
 }
 
 export interface OptionsMountedForComponent {
