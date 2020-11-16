@@ -1,4 +1,4 @@
-export abstract class Errors {
+export abstract class ComponentErrors {
   protected throwNoEventsAddedError(): never {
     throw new Error(
       `You didn't add events, so there is no sense of removing them. You can 

@@ -1,11 +1,15 @@
+import { EventEmitterErrors } from '../Errors';
+
 type EventEmitterListeners = {
   [key: string]: Function[];
 };
 
-export class EventEmitter {
+export class EventEmitter extends EventEmitterErrors {
   private readonly listeners: EventEmitterListeners;
 
   constructor() {
+    super();
+
     this.listeners = {};
   }
 
@@ -18,10 +22,7 @@ export class EventEmitter {
 
     listeners.forEach(listener => {
       if (listener.length !== args.length) {
-        throw new Error(
-          `The number of arguments passed to the trigger method and arguments, 
-          required by a listener of the event '${eventType}', aren't equal`
-        );
+        this.throwNumberOfArgumentsDoesNotMatchError(eventType);
       }
 
       listener(...args);
@@ -48,10 +49,7 @@ export class EventEmitter {
     const listenersOfCurrentEvent = this.listeners[eventType];
 
     if (!listenersOfCurrentEvent) {
-      throw new Error(
-        `No listeners present for event '${eventType}'. You need to add listeners 
-        first of all`
-      );
+      this.throwNoListenersPresentForEventError(eventType);
     }
 
     this.listeners[eventType] = listenersOfCurrentEvent.filter(

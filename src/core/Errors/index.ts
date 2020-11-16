@@ -1,3 +1,4 @@
-import { Errors } from './Errors';
+import { ComponentErrors } from './ComponentErrors';
+import { EventEmitterErrors } from './EventEmitterErrors';
 
-export { Errors };
+export { ComponentErrors, EventEmitterErrors };
