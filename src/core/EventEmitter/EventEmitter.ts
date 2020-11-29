@@ -5,13 +5,7 @@ type EventEmitterListeners = {
 };
 
 export class EventEmitter extends EventEmitterErrors {
-  private readonly listeners: EventEmitterListeners;
-
-  constructor() {
-    super();
-
-    this.listeners = {};
-  }
+  private readonly listeners: EventEmitterListeners = {};
 
   public trigger<T extends any[]>(eventType: string, ...args: T): void {
     const listeners = this.listeners[eventType];

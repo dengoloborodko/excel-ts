@@ -6,13 +6,10 @@ export abstract class DOMListener extends ComponentErrors {
     ADD: 'add',
     REMOVE: 'remove'
   };
-  private isEventsAdded: boolean;
+  private isEventsAdded: boolean = false;
 
   protected constructor(private events: DomListenerEvents) {
     super();
-
-    this.events = events;
-    this.isEventsAdded = false;
   }
 
   protected addEvents($root: HTMLElement): void {
