@@ -1,5 +1,5 @@
-import { DomListenerEvent, DomListenerEvents } from '../types';
 import { ComponentErrors } from '../Errors';
+import { DomListenerEvent, DomListenerEvents } from './types';
 
 export abstract class DOMListener extends ComponentErrors {
   private static eventManipulationType = {

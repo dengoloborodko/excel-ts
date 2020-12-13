@@ -1,14 +1,17 @@
-import { DOMListener } from '../DOMListener';
 import { EventEmitter } from '../EventEmitter';
+import { DOMListener } from '../DOMListener';
 import {
+  ComponentInterface,
   ComponentChildren,
   OptionsPassedToComponent,
   OptionsMountedForComponent
-} from '../types';
+} from './types';
 
 const eventEmitter = new EventEmitter();
 
-export abstract class Component extends DOMListener {
+export abstract class Component
+  extends DOMListener
+  implements ComponentInterface {
   private $el: HTMLElement | null;
   private readonly options: OptionsMountedForComponent;
   protected readonly children: ComponentChildren;

@@ -1,15 +1,9 @@
 import { EventEmitterErrors } from '../Errors';
+import { EventEmitterInterface, EventEmitterListeners } from './types';
 
-type EventEmitterListener = {
-  listener: Function;
-  context?: object;
-};
-
-type EventEmitterListeners = {
-  [key: string]: EventEmitterListener[];
-};
-
-export class EventEmitter extends EventEmitterErrors {
+export class EventEmitter
+  extends EventEmitterErrors
+  implements EventEmitterInterface {
   private readonly listeners: EventEmitterListeners = {};
 
   public trigger<T extends (...args: any) => any>(
