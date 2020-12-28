@@ -69,6 +69,12 @@ export abstract class Component
     return this.$el.outerHTML;
   }
 
+  public setElementHTML(html: string): void {
+    const $el = this.getElementNode();
+
+    $el.innerHTML = html;
+  }
+
   protected preinitialize(): void {}
 
   public initialize(): void {

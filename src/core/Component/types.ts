@@ -20,6 +20,7 @@ export type OptionsMountedForComponent = {
 export interface ComponentInterface {
   getElementNode(): HTMLElement;
   getElementHTML(): string;
+  setElementHTML(html: string): void;
   initialize(): void;
   render(): void;
   destroy(): void;
