@@ -62,11 +62,9 @@ export abstract class Component
   }
 
   public getElementHTML(): string {
-    if (!this.$el) {
-      this.throwComponentHTMLIsNotPresentError();
-    }
+    const $el = this.getElementNode();
 
-    return this.$el.outerHTML;
+    return $el.outerHTML;
   }
 
   public setElementHTML(html: string): void {

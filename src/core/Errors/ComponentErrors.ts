@@ -47,13 +47,6 @@ export abstract class ComponentErrors {
     );
   }
 
-  protected throwComponentHTMLIsNotPresentError(): never {
-    throw new Error(
-      `Component html isn't present yet. You should call the initialize method 
-        first of all after component object creation`
-    );
-  }
-
   protected throwComponentIsNotInitializedError(): never {
     throw new Error(
       `Component isn't initialized yet. There is no sense in destroying it`
