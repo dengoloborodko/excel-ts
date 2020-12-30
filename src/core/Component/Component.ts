@@ -17,7 +17,7 @@ export abstract class Component
   protected readonly children: ComponentChildren;
   protected eventEmitter: EventEmitter;
 
-  protected constructor(options: OptionsPassedToComponent = {}) {
+  constructor(options: OptionsPassedToComponent = {}) {
     const {
       tagName = 'div',
       className,
