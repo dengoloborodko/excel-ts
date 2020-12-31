@@ -4,7 +4,8 @@ import {
   ComponentInterface,
   ComponentChildren,
   OptionsPassedToComponent,
-  OptionsMountedForComponent
+  OptionsMountedForComponent,
+  Props
 } from './types';
 
 const eventEmitter = new EventEmitter();
@@ -16,8 +17,9 @@ export abstract class Component
   private readonly options: OptionsMountedForComponent;
   protected readonly children: ComponentChildren;
   protected eventEmitter: EventEmitter;
+  protected props: Props;
 
-  constructor(options: OptionsPassedToComponent = {}) {
+  constructor(options: OptionsPassedToComponent = {}, props: Props = {}) {
     const {
       tagName = 'div',
       className,
@@ -32,6 +34,7 @@ export abstract class Component
     this.options = { tagName, className, id };
     this.children = children;
     this.eventEmitter = eventEmitter;
+    this.props = props;
     this.render = this.render.bind(this);
   }
 

@@ -17,6 +17,8 @@ export type OptionsMountedForComponent = {
   tagName: string;
 };
 
+export type Props = { [key: string]: any };
+
 export interface ComponentInterface {
   getElementNode(): HTMLElement;
   getElementHTML(): string;
